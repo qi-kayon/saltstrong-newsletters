@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salt Strong Chapter Newsletter Archive</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ocean-deep: #0a2540;
+            --ocean-mid: #1a4d70;
+            --seafoam: #64b5a6;
+            --sand: #f4e8d8;
+            --coral: #ff6b4a;
+            --wave-gray: #8ba3b0;
+            --text-dark: #1a2930;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: linear-gradient(135deg, var(--ocean-deep) 0%, var(--ocean-mid) 100%);
+            color: var(--sand);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Decorative wave background */
+        body::before {
+            content: '';
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: 
+                radial-gradient(ellipse 800px 50px at 50% 100%, rgba(100, 181, 166, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse 600px 40px at 20% 120%, rgba(100, 181, 166, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            margin-bottom: 60px;
+            text-align: center;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            letter-spacing: 0.05em;
+            color: var(--sand);
+            margin-bottom: 12px;
+            text-shadow: 2px 4px 8px rgba(0,0,0,0.3);
+            line-height: 1;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--seafoam);
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .latest-banner {
+            background: linear-gradient(135deg, var(--coral) 0%, #e85a3a 100%);
+            padding: 24px 32px;
+            border-radius: 16px;
+            margin-bottom: 48px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            animation: slideInLeft 0.8s ease-out 0.2s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .latest-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            to {
+                left: 100%;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .latest-banner h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+            letter-spacing: 0.08em;
+            margin-bottom: 8px;
+            color: white;
+        }
+
+        .latest-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: white;
+            color: var(--coral);
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .latest-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .latest-link svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .latest-link:hover svg {
+            transform: translateX(4px);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 48px;
+        }
+
+        /* Vertical timeline line */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--seafoam), transparent);
+        }
+
+        .newsletter-item {
+            position: relative;
+            margin-bottom: 32px;
+            background: rgba(26, 77, 112, 0.4);
+            border: 1px solid rgba(100, 181, 166, 0.3);
+            border-radius: 12px;
+            padding: 24px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            animation: fadeInUp 0.6s ease-out both;
+        }
+
+        .newsletter-item:nth-child(1) { animation-delay: 0.3s; }
+        .newsletter-item:nth-child(2) { animation-delay: 0.4s; }
+        .newsletter-item:nth-child(3) { animation-delay: 0.5s; }
+        .newsletter-item:nth-child(4) { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .newsletter-item:hover {
+            background: rgba(26, 77, 112, 0.6);
+            border-color: var(--seafoam);
+            transform: translateX(8px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+
+        /* Timeline dot */
+        .newsletter-item::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 28px;
+            width: 12px;
+            height: 12px;
+            background: var(--seafoam);
+            border: 3px solid var(--ocean-deep);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(100, 181, 166, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-item:hover::before {
+            background: var(--coral);
+            box-shadow: 0 0 0 6px rgba(255, 107, 74, 0.3);
+        }
+
+        .newsletter-date {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            color: var(--seafoam);
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+        }
+
+        .newsletter-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--sand);
+            margin-bottom: 12px;
+        }
+
+        .newsletter-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--seafoam);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-link:hover {
+            color: var(--coral);
+            gap: 12px;
+        }
+
+        .newsletter-link svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px 0;
+            color: var(--wave-gray);
+        }
+
+        .loading::after {
+            content: '...';
+            animation: dots 1.5s infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+
+        footer {
+            text-align: center;
+            padding: 48px 0 24px;
+            color: var(--wave-gray);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(100, 181, 166, 0.2);
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 16px;
+            }
+
+            .timeline {
+                padding-left: 32px;
+            }
+
+            .timeline::before {
+                left: 12px;
+            }
+
+            .newsletter-item::before {
+                left: -28px;
+            }
+
+            .latest-banner {
+                padding: 20px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Newsletter Archive</h1>
+            <p class="subtitle">Salt Strong Chapter</p>
+        </header>
+
+        <div class="latest-banner">
+            <h2>📬 Latest Newsletter</h2>
+            <a href="latest.html" class="latest-link" id="latestLink">
+                <span>Read Current Issue</span>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+
+        <div class="timeline" id="timeline">
+            <div class="loading">Loading newsletters</div>
+        </div>
+
+        <footer>
+            Salt Strong Chapter Newsletter Archive
+        </footer>
+    </div>
+
+    <script>
+        // Load newsletter configuration
+        fetch('newsletters/config.json')
+            .then(response => response.json())
+            .then(data => {
+                const timeline = document.getElementById('timeline');
+                timeline.innerHTML = '';
+
+                data.newsletters.forEach((newsletter, index) => {
+                    const item = document.createElement('div');
+                    item.className = 'newsletter-item';
+                    item.style.animationDelay = `${0.3 + (index * 0.1)}s`;
+                    
+                    item.innerHTML = `
+                        <div class="newsletter-date">${newsletter.date}</div>
+                        <div class="newsletter-title">${newsletter.title}</div>
+                        <a href="newsletters/${newsletter.filename}" class="newsletter-link" target="_blank">
+                            <span>View PDF</span>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                            </svg>
+                        </a>
+                    `;
+                    
+                    timeline.appendChild(item);
+                });
+            })
+            .catch(error => {
+                console.error('Error loading newsletters:', error);
+                document.getElementById('timeline').innerHTML = 
+                    '<div class="loading">Unable to load newsletters. Please check configuration.</div>';
+            });
+    </script>
+</body>
+</html>
