@@ -1,9 +1,9 @@
 {
   "newsletters": [
     {
-      "date": "January 2025",
-      "title": "Your Newsletter Title",
-      "filename": "your-newsletter.pdf"
+      "date": "January 2026",
+      "title": "Example Newsletter",
+      "filename": "Example.pdf"
     }
   ]
 }
