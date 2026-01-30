@@ -34,15 +34,10 @@
         }
 
         /* Decorative wave background */
-        /* Banner at top - centered with max-width */
+        /* Banner at top - dynamic height based on image aspect ratio */
         .banner-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            position: relative;
             width: 100%;
-            height: 220px;
-            min-height: 180px;
             background: var(--ocean-deep);
             z-index: 10;
             overflow: hidden;
@@ -54,9 +49,8 @@
         .banner-container img {
             max-width: 1920px;
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
+            height: auto;
+            display: block;
             animation: fadeIn 1.2s ease-out;
         }
 
@@ -77,13 +71,12 @@
                 radial-gradient(ellipse 800px 50px at 50% 100%, rgba(100, 181, 166, 0.3) 0%, transparent 50%),
                 radial-gradient(ellipse 600px 40px at 20% 120%, rgba(100, 181, 166, 0.2) 0%, transparent 50%);
             pointer-events: none;
-            z-index: 0;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 260px 24px 60px;
+            padding: 60px 24px;
             position: relative;
             z-index: 1;
         }
@@ -334,13 +327,8 @@
         }
 
         @media (max-width: 768px) {
-            .banner-container {
-                height: 140px;
-                min-height: 120px;
-            }
-
             .container {
-                padding: 220px 16px 40px;
+                padding: 40px 16px;
             }
 
             .timeline {
