@@ -34,7 +34,7 @@
         }
 
         /* Decorative wave background */
-        /* Banner at top - always fully visible and FULL WIDTH */
+        /* Banner at top - centered with max-width */
         .banner-container {
             position: fixed;
             top: 0;
@@ -46,9 +46,13 @@
             background: var(--ocean-deep);
             z-index: 10;
             overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .banner-container img {
+            max-width: 1920px;
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -59,22 +63,6 @@
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
-        }
-
-        /* Gradient fade from banner into page */
-        .banner-fade {
-            position: fixed;
-            top: 220px;
-            left: 0;
-            right: 0;
-            height: 100px;
-            background: linear-gradient(to bottom,
-                rgba(10, 37, 64, 0.4) 0%,
-                rgba(10, 37, 64, 0.2) 50%,
-                transparent 100%
-            );
-            z-index: 9;
-            pointer-events: none;
         }
 
         /* Bottom wave decoration */
@@ -351,11 +339,6 @@
                 min-height: 120px;
             }
 
-            .banner-fade {
-                top: 140px;
-                height: 60px;
-            }
-
             .container {
                 padding: 220px 16px 40px;
             }
@@ -382,7 +365,6 @@
     <div class="banner-container">
         <img src="SS_Banner.png" alt="Salt Strong Space Coast Local Chapter">
     </div>
-    <div class="banner-fade"></div>
     
     <div class="container">
         <header>
@@ -404,7 +386,7 @@
         </div>
 
         <footer>
-            Salt Strong Chapter Newsletter Archive
+            Space Coast Chapter Newsletter Archive
         </footer>
     </div>
 
