@@ -9,8 +9,7 @@ A simple, beautiful static website for hosting chapter newsletters with a persis
 - ⚡ **Lightning fast** - static HTML/CSS/JS, no backend required
 - 🔗 **Persistent latest link** - `/latest.html` always redirects to newest newsletter
 - 📊 **Timeline view** - chronological archive of all newsletters
-- 💰 **Free hosting** - perfect for GitHub Pages
-- 🛠️ **Easy maintenance** - just upload PDF and update one JSON file
+
 
 ## Quick Start
 
