@@ -34,31 +34,45 @@
         }
 
         /* Decorative wave background */
-        /* Banner at top with fade */
-        body::before {
-            content: '';
+        /* Banner at top - always fully visible */
+        .banner-container {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            height: 250px;
-            background: 
-                url('banner_sealremoved_LARGE.jpg') center top / cover no-repeat,
-                linear-gradient(to bottom, 
-                    transparent 0%, 
-                    transparent 40%,
-                    rgba(10, 37, 64, 0.7) 70%,
-                    var(--ocean-deep) 100%
-                );
-            background-blend-mode: normal;
-            pointer-events: none;
-            z-index: 0;
+            height: 180px;
+            background: var(--ocean-deep);
+            z-index: 10;
+            overflow: hidden;
+        }
+
+        .banner-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
             animation: fadeIn 1.2s ease-out;
         }
 
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
+        }
+
+        /* Gradient fade from banner into page */
+        .banner-fade {
+            position: fixed;
+            top: 180px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom,
+                var(--ocean-deep) 0%,
+                rgba(10, 37, 64, 0.8) 50%,
+                transparent 100%
+            );
+            z-index: 9;
+            pointer-events: none;
         }
 
         /* Bottom wave decoration */
@@ -79,7 +93,7 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 280px 24px 60px;
+            padding: 220px 24px 60px;
             position: relative;
             z-index: 1;
         }
@@ -330,6 +344,15 @@
         }
 
         @media (max-width: 768px) {
+            .banner-container {
+                height: 120px;
+            }
+
+            .banner-fade {
+                top: 120px;
+                height: 60px;
+            }
+
             .container {
                 padding: 200px 16px 40px;
             }
@@ -353,6 +376,11 @@
     </style>
 </head>
 <body>
+    <div class="banner-container">
+        <img src="SS_Banner.png" alt="Salt Strong Space Coast Local Chapter">
+    </div>
+    <div class="banner-fade"></div>
+    
     <div class="container">
         <header>
             <h1>Newsletter Archive</h1>
