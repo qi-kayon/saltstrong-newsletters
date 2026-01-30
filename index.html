@@ -34,12 +34,13 @@
         }
 
         /* Decorative wave background */
-        /* Banner at top - always fully visible */
+        /* Banner at top - always fully visible and FULL WIDTH */
         .banner-container {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
+            width: 100%;
             height: 180px;
             background: var(--ocean-deep);
             z-index: 10;
@@ -49,7 +50,7 @@
         .banner-container img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
             object-position: center;
             animation: fadeIn 1.2s ease-out;
         }
